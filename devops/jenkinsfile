@@ -4,10 +4,14 @@ pipeline {
       yamlFile 'examples/declarative_from_yaml_file/KubernetesPod.yaml'
     }
   }
+  environment {
+    workingGitURL='
+    workingBranch=
+  }  
   stages {
     stage ('Prep') {
       steps {
-          git url: "$workingGitURL}"., branch "{workingBranch}"
+          git url: "${workingGitURL}"., branch "{workingBranch}"
       }
     }
     stage('Run maven') {
