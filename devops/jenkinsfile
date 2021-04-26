@@ -21,10 +21,27 @@ pipeline {
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh 'mvn -version'
+          
+          echo '*************************************************************'
+          echo 'proxy setup'
+          echo '*************************************************************'
+          sh 'env'
+          sh 'env | grep http_proxy'
+          sh 'env | grep https_proxy'
+          sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
         }
         container('busybox') {
           sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh '/bin/busybox'
+          
+          echo '*************************************************************'
+          echo 'proxy setup'
+          echo '*************************************************************'
+          sh 'env'
+          sh 'env | grep http_proxy'
+          sh 'env | grep https_proxy'
+          sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          
         }
       }
     }
