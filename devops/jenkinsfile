@@ -9,11 +9,11 @@ pipeline {
     workingBranch='main'
   }  
   stages {
-    stage ('Prep') {
-      steps {
-          git url: "${workingGitURL}", branch "${workingBranch}"
-      }
-    }
+    //stage ('Prep') {
+    //  steps {
+    //      git url: "${workingGitURL}", branch "${workingBranch}"
+    //  }
+    //}
     stage('Run maven') {
       steps {
         sh 'set'
