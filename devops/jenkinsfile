@@ -16,10 +16,10 @@ pipeline {
         echo '*************************************************************'
         echo 'before container'
         echo '*************************************************************'
-        def proxy_http='proxy.cammis.medi-cal.ca.gov:8080'
-        def proxy_https='proxy.cammis.medi-cal.ca.gov:8080'
-        sh 'env'  
-      }  
+        sh 'env' 
+        echo "http_proxy : ${proxy_http}"
+        echo "https_proxy : ${proxy_https}"
+        }  
     }
     stage('Run maven') {
       steps {
@@ -33,8 +33,9 @@ pipeline {
           echo 'proxy setup'
           echo '*************************************************************'
           sh 'env'
-          //sh 'env | grep http_proxy'
-          //sh 'env | grep https_proxy'
+          echo "http_proxy : ${proxy_http}"
+          echo "https_proxy : ${proxy_https}"
+          
           sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
         }
         container('busybox') {
