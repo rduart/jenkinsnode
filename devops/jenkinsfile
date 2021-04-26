@@ -11,8 +11,12 @@ pipeline {
   stages {
     stage ('Prep') {
       steps {
-        sh 'env'
+      echo '*************************************************************'
+      echo 'before container'
+      echo '*************************************************************'
      }
+        sh 'env'
+        
     }
     stage('Run maven') {
       steps {
