@@ -5,8 +5,8 @@ pipeline {
     }
   }
   environment {
-    workingGitURL='
-    workingBranch=
+    workingGitURL='https://github.com/rduart/jenkinsnode.git'
+    workingBranch='main'
   }  
   stages {
     stage ('Prep') {
