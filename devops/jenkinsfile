@@ -27,8 +27,8 @@ pipeline {
           echo '*************************************************************'
           sh 'env'
           sh 'env | grep http_proxy'
-          sh 'env | grep https_proxy'
-          sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          //sh 'env | grep https_proxy'
+          //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
         }
         container('busybox') {
           sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
@@ -37,10 +37,10 @@ pipeline {
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
-          sh 'env'
-          sh 'env | grep http_proxy'
-          sh 'env | grep https_proxy'
-          sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          //sh 'env'
+          //sh 'env | grep http_proxy'
+          //sh 'env | grep https_proxy'
+          //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           
         }
       }
