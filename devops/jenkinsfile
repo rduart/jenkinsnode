@@ -16,7 +16,8 @@ pipeline {
         echo '*************************************************************'
         echo 'before container'
         echo '*************************************************************'
-        
+        def proxy_http='proxy.cammis.medi-cal.ca.gov:8080'
+        def proxy_https='proxy.cammis.medi-cal.ca.gov:8080'
         sh 'env'  
       }  
     }
