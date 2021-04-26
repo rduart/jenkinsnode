@@ -5,7 +5,7 @@ pipeline {
     }
   }
   stages {
-    stage ('Prep") {
+    stage ('Prep') {
       steps {
           git url: "$workingGitURL}"., branch "{workingBranch}"
       }
