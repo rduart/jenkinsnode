@@ -27,6 +27,7 @@ pipeline {
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
         echo "http_proxy : ${proxy_http}"
         echo "https_proxy : ${proxy_https}"
+        sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           echo "http_proxy : ${proxy_http}"
