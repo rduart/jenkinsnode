@@ -25,7 +25,11 @@ pipeline {
       steps {
         //sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
+        echo "http_proxy : ${proxy_http}"
+        echo "https_proxy : ${proxy_https}"
         container('maven') {
+          echo "http_proxy : ${proxy_http}"
+          echo "https_proxy : ${proxy_https}"
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh 'mvn -version'
           
