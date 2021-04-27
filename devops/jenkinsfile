@@ -18,8 +18,8 @@ pipeline {
         echo '*************************************************************'
         sh 'env' 
         //echo "http_proxy : ${http_proxy}"
-        //echo "https_proxy : ${httsp_proxy}"
-        sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+        //echo "https_proxy : ${https_proxy}"
+        //sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         }  
     }
     stage('Run maven') {
@@ -27,20 +27,20 @@ pipeline {
         //sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
         echo "http_proxy : ${http_proxy}"
-        echo "https_proxy : ${http_proxy}"
-        //sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+        echo "https_proxy : ${https_proxy}"
+        
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           //echo "http_proxy : ${http_proxy}"
-          //echo "https_proxy : ${http_proxy}"
+          //echo "https_proxy : ${https_proxy}"
           sh 'mvn -version'
           
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
           //sh 'env'
-          echo "http_proxy : ${http_proxyp}"
-          echo "https_proxy : ${http_proxy}"
+          echo "http_proxy : ${http_proxy}"
+          echo "https_proxy : ${https_proxy}"
           sh 'curl -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
