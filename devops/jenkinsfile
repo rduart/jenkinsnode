@@ -7,8 +7,8 @@ pipeline {
   environment {
     workingGitURL='https://github.com/rduart/jenkinsnode.git'
     workingBranch='main'
-    //proxy_http='proxy.cammis.medi-cal.ca.gov:8080'
-    //proxy_https='proxy.cammis.medi-cal.ca.gov:8080'
+    http_proxy='proxy.cammis.medi-cal.ca.gov:8080'
+    https_proxy='proxy.cammis.medi-cal.ca.gov:8080'
   }  
   stages {
     stage ('Prep') {
@@ -17,8 +17,8 @@ pipeline {
         echo 'before container'
         echo '*************************************************************'
         sh 'env' 
-        //echo "http_proxy : ${proxy_http}"
-        //echo "https_proxy : ${proxy_https}"
+        //echo "http_proxy : ${http_proxy}"
+        //echo "https_proxy : ${httsp_proxy}"
         sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         }  
     }
@@ -26,29 +26,29 @@ pipeline {
       steps {
         //sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
-        //echo "http_proxy : ${proxy_http}"
-        //echo "https_proxy : ${proxy_https}"
-        sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+        echo "http_proxy : ${http_proxy}"
+        echo "https_proxy : ${http_proxy}"
+        //sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          //echo "http_proxy : ${proxy_http}"
-          //echo "https_proxy : ${proxy_https}"
+          //echo "http_proxy : ${http_proxy}"
+          //echo "https_proxy : ${http_proxy}"
           sh 'mvn -version'
           
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
           //sh 'env'
-          echo "http_proxy : ${proxy_http}"
-          echo "https_proxy : ${proxy_https}"
-          //sh 'curl -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          echo "http_proxy : ${http_proxyp}"
+          echo "https_proxy : ${http_proxy}"
+          sh 'curl -L https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
         }
         container('busybox') {
           sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          //echo "http_proxy : ${proxy_http}"
-          //echo "https_proxy : ${proxy_https}"
+          //echo "http_proxy : ${http_proxy}"
+          //echo "https_proxy : ${https_proxy}"
           sh '/bin/busybox'
           
           echo '*************************************************************'
