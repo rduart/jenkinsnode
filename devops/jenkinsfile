@@ -41,7 +41,7 @@ pipeline {
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
           
-          sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
+          //sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
           
           //sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -O awscliv2.zip'
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
@@ -56,9 +56,9 @@ pipeline {
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
-          //sh 'env'
-          //sh 'env | grep http_proxy'
-          //sh 'env | grep https_proxy'
+          echo "http_proxy : ${http_proxy}"
+          echo "https_proxy : ${https_proxy}
+          sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           
         }
