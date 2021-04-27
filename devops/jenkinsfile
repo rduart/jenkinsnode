@@ -41,8 +41,8 @@ pipeline {
           //sh 'env'
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
-          
-          sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip'
+          //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
         }
         container('busybox') {
