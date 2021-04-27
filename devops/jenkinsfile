@@ -7,8 +7,8 @@ pipeline {
   environment {
     workingGitURL='https://github.com/rduart/jenkinsnode.git'
     workingBranch='main'
-    proxy_http='proxy.cammis.medi-cal.ca.gov:8080'
-    proxy_https='proxy.cammis.medi-cal.ca.gov:8080'
+    //proxy_http='proxy.cammis.medi-cal.ca.gov:8080'
+    //proxy_https='proxy.cammis.medi-cal.ca.gov:8080'
   }  
   stages {
     stage ('Prep') {
@@ -17,8 +17,8 @@ pipeline {
         echo 'before container'
         echo '*************************************************************'
         sh 'env' 
-        echo "http_proxy : ${proxy_http}"
-        echo "https_proxy : ${proxy_https}"
+        //echo "http_proxy : ${proxy_http}"
+        //echo "https_proxy : ${proxy_https}"
         sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         }  
     }
@@ -26,13 +26,13 @@ pipeline {
       steps {
         //sh 'set'
         sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
-        echo "http_proxy : ${proxy_http}"
-        echo "https_proxy : ${proxy_https}"
+        //echo "http_proxy : ${proxy_http}"
+        //echo "https_proxy : ${proxy_https}"
         sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
         container('maven') {
           sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          echo "http_proxy : ${proxy_http}"
-          echo "https_proxy : ${proxy_https}"
+          //echo "http_proxy : ${proxy_http}"
+          //echo "https_proxy : ${proxy_https}"
           sh 'mvn -version'
           
           echo '*************************************************************'
@@ -47,8 +47,8 @@ pipeline {
         }
         container('busybox') {
           sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          echo "http_proxy : ${proxy_http}"
-          echo "https_proxy : ${proxy_https}"
+          //echo "http_proxy : ${proxy_http}"
+          //echo "https_proxy : ${proxy_https}"
           sh '/bin/busybox'
           
           echo '*************************************************************'
