@@ -45,6 +45,8 @@ pipeline {
         }
         container('busybox') {
           sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+          echo "http_proxy : ${proxy_http}"
+          echo "https_proxy : ${proxy_https}"
           sh '/bin/busybox'
           
           echo '*************************************************************'
