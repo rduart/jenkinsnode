@@ -7,8 +7,8 @@ pipeline {
   environment {
     workingGitURL='https://github.com/rduart/jenkinsnode.git'
     workingBranch='main'
-    http_proxy='proxy.cammis.medi-cal.ca.gov:8080'
-    https_proxy='proxy.cammis.medi-cal.ca.gov:8080'
+    http_proxy='http://proxy.cammis.medi-cal.ca.gov:8080'
+    https_proxy='http://proxy.cammis.medi-cal.ca.gov:8080'
   }  
   stages {
     stage ('Prep') {
