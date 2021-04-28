@@ -25,14 +25,14 @@ pipeline {
     stage('Run maven') {
       steps {
         //sh 'set'
-        sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
+        //sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
         echo "http_proxy : ${http_proxy}"
         echo "https_proxy : ${https_proxy}"
         
-        container('maven') {
-          sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+        container('buildah') {
+          //sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           
-          sh 'mvn -version'
+          //sh 'mvn -version'
           
           echo '*************************************************************'
           echo 'proxy setup'
@@ -62,11 +62,11 @@ pipeline {
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           //sh 'wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
         }
-        container('busybox') {
-          sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+        container('node') {
+          //sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           //echo "http_proxy : ${http_proxy}"
           //echo "https_proxy : ${https_proxy}"
-          sh '/bin/busybox'
+          //sh '/bin/busybox'
           
           echo '*************************************************************'
           echo 'proxy setup'
