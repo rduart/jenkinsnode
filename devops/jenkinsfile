@@ -31,10 +31,7 @@ pipeline {
         container('buildah') {
           script {
           
-              withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
-                              credentialsId: 'aws-ecr-login',
-                              accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                              secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+              withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-ecr-login', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
           
              //withCredentials([
              //          usernamePassword(credentialsId: 'aws-ecr-login',
