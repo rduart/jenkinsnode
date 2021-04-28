@@ -31,7 +31,7 @@ pipeline {
         container('buildah') {
           script {
              withCredentials([
-                       usernamePassword(credentialsId: 'image-regestry-creds',
+                       usernamePassword(credentialsId: 'aws-ecr-login',
                           passwordVariable: 'REGISTRY_PASSWORD',
                           usernameVariable: 'REGISTRY_USER')]) {
             // sh """
