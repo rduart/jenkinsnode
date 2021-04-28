@@ -49,6 +49,7 @@ pipeline {
           //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
           sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
           sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
+          sh 'whoami'
           sh 'chmod 777 aws'
           sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
           sh './aws configure list-profiles'
