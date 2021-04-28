@@ -41,7 +41,7 @@ pipeline {
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
           sh 'whoami'
-          sh 'yum install unzip'
+          sh 'sudo dnf install unzip'
           sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
           sh 'unzip awscliv2.zip'
           sh 'pwd'
