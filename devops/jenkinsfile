@@ -30,7 +30,13 @@ pipeline {
         
         container('buildah') {
           script {
-    
+          
+             withCredentials([
+                       usernamePassword(credentialsId: "${IMAGE_REGISTRY_CREDS_ID}",
+                          passwordVariable: 'REGISTRY_PASSWORD',
+                          usernameVariable: 'REGISTRY_USER')]) {
+            sh """
+            
             echo '*************************************************************'
             echo '   buildah proxy setup'
             echo '*************************************************************'
