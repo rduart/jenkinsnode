@@ -48,7 +48,8 @@ pipeline {
           sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
           //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
           //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
-          sh ./home/jenkins/agent/workspace/NextPL2/aws/dist/awsconfigure list-profiles
+          sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
+          sh './aws configure list-profiles'
           //sh './aws/install'
           //sh 'aws --version'
           
