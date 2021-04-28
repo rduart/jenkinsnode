@@ -31,16 +31,11 @@ pipeline {
         container('buildah') {
           script {
           
-              withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-ecr-login', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-ecr-login', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
           
-             //withCredentials([
-             //          usernamePassword(credentialsId: 'aws-ecr-login',
-             //             passwordVariable: 'REGISTRY_PASSWORD',
-             //             usernameVariable: 'REGISTRY_USER')]) {
-            // sh """
-            
-            //echo "REGISTRY_USER: ${REGISTRY_USER}"
-            //echo "REGISTRY_PASSWORD: ${REGISTRY_PASSWORD}"
+          
+            echo "AWS_ACCESS_KEY_ID : ${AWS_ACCESS_KEY_ID}"
+            echo "AWS_SECRET_ACCESS_KEY : ${AWS_SECRET_ACCESS_KEY}"
             
             echo '*************************************************************'
             echo '   buildah proxy setup'
