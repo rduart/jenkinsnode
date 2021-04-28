@@ -24,19 +24,20 @@ spec:
     - name: CONTAINER_ENV_VAR
       value: busybox
   - name: buildah
-              image: quay.io/buildah/stable:v1.9.0
-              tty: true
-              command: ["/bin/bash"]
-              workingDir: /home/jenkins/agent
-              env: 
-                - name: HOME
-                  value: /home/devops
-                - name: DOCKERFILE
-                  value: ./Dockerfile
-                - name: CONTEXT
-                  value: .
-                - name: TLSVERIFY
-                  value: "false"
-              volumeMounts:
-                - mountPath: /var/lib/containers
-                  name: varlibcontainers
+    image: quay.io/buildah/stable:v1.9.0
+    command: ["/bin/bash"]
+    workingDir: /home/jenkins/agent
+    - cat
+    tty: true
+    env: 
+     - name: HOME
+       value: /home/devops
+     - name: DOCKERFILE
+       value: ./Dockerfile
+     - name: CONTEXT
+       value: .
+     - name: TLSVERIFY
+       value: "false"
+    volumeMounts:
+     - mountPath: /var/lib/containers
+       name: varlibcontainers
