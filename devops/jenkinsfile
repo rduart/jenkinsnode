@@ -31,17 +31,15 @@ pipeline {
         container('buildah') {
           script {
           
-          withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'jenkins',
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-        ]]) {
+              withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
+                              credentialsId: 'aws-ecr-login',
+                              accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                              secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
           
-             withCredentials([
-                       usernamePassword(credentialsId: 'aws-ecr-login',
-                          passwordVariable: 'REGISTRY_PASSWORD',
-                          usernameVariable: 'REGISTRY_USER')]) {
+             //withCredentials([
+             //          usernamePassword(credentialsId: 'aws-ecr-login',
+             //             passwordVariable: 'REGISTRY_PASSWORD',
+             //             usernameVariable: 'REGISTRY_USER')]) {
             // sh """
             
             echo "REGISTRY_USER: ${REGISTRY_USER}"
