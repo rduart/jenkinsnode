@@ -37,7 +37,7 @@ pipeline {
             //sh 'env'
             echo "http_proxy : ${http_proxy}"
             echo "https_proxy : ${https_proxy}"
-            whoami
+            sh 'whoami'
             //sh 'yum update'
             yum install -y unzip
           
