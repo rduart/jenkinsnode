@@ -27,10 +27,6 @@ spec:
               env:
                 - name: HOME
                   value: /home/jenkins/agent
-                - name: PROXY
-                  value: http://proxy.cammis.medi-cal.ca.gov:8080
-                - name: https_proxy
-                  value: http://proxy.cammis.medi-cal.ca.gov:8080
                 - name: GIT_AUTH_USER
                   valueFrom:
                     secretKeyRef:
