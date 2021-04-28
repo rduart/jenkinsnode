@@ -45,7 +45,9 @@ pipeline {
           sh 'unzip awscliv2.zip'
           sh 'pwd'
           sh 'ls -lha'
-          sh 'ls -lha /home/jenkins/agent/workspace/NextPL/aws'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
           //sh './aws/install'
           //sh 'aws --version'
           
