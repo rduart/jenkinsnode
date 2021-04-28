@@ -64,8 +64,8 @@ pipeline {
        
             sh './aws/install'
             sh 'aws --version'
-            
-            sh 'aws ecr get-login-password'
+            sh 'aws s3 ls'
+            //sh 'aws ecr get-login-password'
             
             //""" 
             }  //end with
