@@ -54,7 +54,7 @@ pipeline {
           
        
             ./aws/install
-            aws --version
+            sh 'aws --version'
             
           } // end script
         }  // end container
