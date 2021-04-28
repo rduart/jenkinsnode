@@ -23,7 +23,7 @@ spec:
                     optional: true
                 - secretRef:
                    name: sonarqube-access
-                    optional: true
+                   optional: true
               env:
                 - name: HOME
                   value: /home/jenkins/agent
