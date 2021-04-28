@@ -16,10 +16,10 @@ pipeline {
         echo '*************************************************************'
         echo 'before container'
         echo '*************************************************************'
-        sh 'env' 
+        //sh 'env' 
         //echo "http_proxy : ${http_proxy}"
         //echo "https_proxy : ${https_proxy}"
-        //sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+        
         }  
     }
     stage('Run maven') {
@@ -42,6 +42,9 @@ pipeline {
           echo "https_proxy : ${https_proxy}"
           
           sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+          sh 'unzip awscliv2.zip'
+          sh 'sudo ./aws/install'
+          sh 'aws --version'
           
           //sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
           
