@@ -24,8 +24,7 @@ pipeline {
     }
     stage('buildah') {
       steps {
-        //sh 'set'
-        //sh "echo OUTSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}"
+        
         echo "http_proxy : ${http_proxy}"
         echo "https_proxy : ${https_proxy}"
         
@@ -35,31 +34,29 @@ pipeline {
           //sh 'mvn -version'
           
           echo '*************************************************************'
-          echo 'proxy setup'
+          echo '   buildah proxy setup'
           echo '*************************************************************'
           sh 'env'
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
           sh 'whoami'
-          sh 'yum install -y unzip'
           //sh 'yum update'
+          sh 'yum install -y unzip'
+          
           sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
           sh 'unzip awscliv2.zip'
+          
           sh 'pwd'
-          //sh 'ls -lha'
-          //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
-          //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
-          //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
-          //sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
           
-          //sh 'chmod 777 aws'
-          //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
+          sh 'ls -lha'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
+          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
+          sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
+          
           //sh './aws configure list-profiles'
-          //sh './aws/install'
-          //sh 'aws --version'
-          
-          //sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -O awscliv2.zip'
-          //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
+          sh './aws/install'
+          sh 'aws --version'
           
         }
         container('node') {
