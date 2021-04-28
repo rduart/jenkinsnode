@@ -39,8 +39,8 @@ pipeline {
              //             usernameVariable: 'REGISTRY_USER')]) {
             // sh """
             
-            echo "REGISTRY_USER: ${REGISTRY_USER}"
-            echo "REGISTRY_PASSWORD: ${REGISTRY_PASSWORD}"
+            //echo "REGISTRY_USER: ${REGISTRY_USER}"
+            //echo "REGISTRY_PASSWORD: ${REGISTRY_PASSWORD}"
             
             echo '*************************************************************'
             echo '   buildah proxy setup'
