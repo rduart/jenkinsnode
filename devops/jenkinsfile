@@ -29,36 +29,35 @@ pipeline {
         echo "https_proxy : ${https_proxy}"
         
         container('buildah') {
-          //sh 'echo MAVEN_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
+          script {
+    
+            echo '*************************************************************'
+            echo '   buildah proxy setup'
+            echo '*************************************************************'
+            //sh 'env'
+            echo "http_proxy : ${http_proxy}"
+            echo "https_proxy : ${https_proxy}"
+            whoami
+            //sh 'yum update'
+            yum install -y unzip
           
-          //sh 'mvn -version'
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
           
-          echo '*************************************************************'
-          echo '   buildah proxy setup'
-          echo '*************************************************************'
-          sh 'env'
-          echo "http_proxy : ${http_proxy}"
-          echo "https_proxy : ${https_proxy}"
-          sh 'whoami'
-          //sh 'yum update'
-          sh 'yum install -y unzip'
+            pwd
           
-          sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-          sh 'unzip awscliv2.zip'
+            //sh 'ls -lha'
+            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
+            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
+            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
+            //sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
           
-          sh 'pwd'
-          
-          sh 'ls -lha'
-          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
-          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
-          sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
-          sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
-          
-          //sh './aws configure list-profiles'
-          sh './aws/install'
-          sh 'aws --version'
-          
-        }
+       
+            ./aws/install
+            aws --version
+            
+          } // end script
+        }  // end container
         container('node') {
           //sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           //echo "http_proxy : ${http_proxy}"
@@ -76,7 +75,7 @@ pipeline {
           
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           
-        }
+        }  // end container
       }
     }
   }
