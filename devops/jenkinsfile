@@ -37,7 +37,7 @@ pipeline {
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
-          //sh 'env'
+          sh 'env'
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
           
