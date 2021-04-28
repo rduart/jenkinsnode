@@ -23,7 +23,7 @@ spec:
     env:
     - name: CONTAINER_ENV_VAR
       value: busybox
-    - name: buildah
+  - name: buildah
               image: quay.io/buildah/stable:v1.9.0
               tty: true
               command: ["/bin/bash"]
