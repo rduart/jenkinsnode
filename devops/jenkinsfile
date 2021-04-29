@@ -68,8 +68,8 @@ pipeline {
             echo "PASS: $PASS" 
             
             // Run buildah login
-            sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
-            
+            //sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
+            sh 'aws ecr get-login-password | buildah login -u "AWS" -p --password-stdin "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
             //""" 
             }  //end with
           } // end script
