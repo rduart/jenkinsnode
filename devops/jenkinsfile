@@ -69,25 +69,18 @@ pipeline {
             
             // Run buildah login
             //sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
-            sh 'aws ecr get-login-password | buildah login -u "AWS" -p --password-stdin "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
+            sh 'aws ecr get-login-password | buildah login -u AWS -p --password-stdin 136299550619.dkr.ecr.us-west-2.amazonaws.com'
             //""" 
             }  //end with
           } // end script
         }  // end container
         container('node') {
-          //sh 'echo BUSYBOX_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
-          //echo "http_proxy : ${http_proxy}"
-          //echo "https_proxy : ${https_proxy}"
-          //sh '/bin/busybox'
-          
+         
           echo '*************************************************************'
           echo 'proxy setup'
           echo '*************************************************************'
           echo "http_proxy : ${http_proxy}"
           echo "https_proxy : ${https_proxy}"
-          
-          //sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
-          //sh 'wget https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -O awscliv2.zip'
           
           //sh 'wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-linux.zip'
           
