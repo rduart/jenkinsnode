@@ -21,7 +21,7 @@ pipeline {
     stage ('Prep') {
       steps {
         echo '*************************************************************'
-        echo 'before container -- Test'
+        echo 'Before container -- Test'
         echo '*************************************************************'
         
         echo "http_proxy : ${http_proxy}"
@@ -67,7 +67,7 @@ pipeline {
             // Show version
             sh 'aws --version'
             
-            // Run aws ecr get-login-password and put in a variable.
+            // Run aws ecr get-login-password and put in a variable.  -- Not needed can be removed
             def PASS = sh returnStdout: true, script:"aws ecr get-login-password"
             echo "PASS: $PASS" 
             
