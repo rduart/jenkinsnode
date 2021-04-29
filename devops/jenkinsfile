@@ -65,7 +65,7 @@ pipeline {
             sh './aws/install'
             sh 'aws --version'
             sh 'aws s3 ls'
-            sh 'aws ecr get-login-password'
+            //sh 'aws ecr get-login-password'
             def PASS = sh returnStdout: true, script:"aws ecr get-login-password"
             echo "PASS: $PASS" 
             
