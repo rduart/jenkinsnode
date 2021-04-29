@@ -13,7 +13,7 @@ pipeline {
     https_proxy = 'http://proxy.cammis.medi-cal.ca.gov:8080'
     no_proxy ='169.254.169.254,ec2.us-east-1.amazonaws.com,s3.us-east-1.amazonaws.com,s3.us-west-2.amazonaws.com,ec2.us-west-2.amazonaws.com,elasticloadbalancing.us-east-1.amazonaws.com,elasticloadbalancing.us-west-2.amazonaws.com,.dev.ocp.cammis.medi-cal.ca.gov,.bld.ocp.cammis.medi-cal.ca.gov,.qa.ocp.cammis.medi-cal.ca.gov,prd.ocp.cammis.medi-cal.ca.gov,.apps.dev.ocp.cammis.medi-cal.ca.gov,.apps.bld.ocp.cammis.medi-cal.ca.gov,.apps.qa.ocp.cammis.medi-cal.ca.gov,.apps.prd.ocp.cammis.medi-cal.ca.gov,s3.dualstack.us-east-1.amazonaws.com,s3.dualstack.us-west-2.amazonaws.com,.s3.dualstack.us-east-1.amazonaws.com,.s3.dualstack.us-west-2.amazonaws.com,.dkr.ecr.us-west-2.amazonaws.com,api.ecr.us-west-2.amazonaws.com, ,.dkr.ecr.us-east-1.amazonaws.com,api.ecr.us-east-1.amazonaws.com'
     
-    // Set AWS Region
+    // Set AWS Region for AWS CLI
     AWS_DEFAULT_REGION = 'us-west-2'
     
   }  
@@ -73,7 +73,8 @@ pipeline {
             
             // Run buildah login
             //sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
-            sh 'aws ecr get-login-password --region us-west-2 | buildah login -u AWS -p --password-stdin 136299550619.dkr.ecr.us-west-2.amazonaws.com'
+            // sh 'aws ecr get-login-password --region us-west-2 | buildah login -u AWS -p --password-stdin 136299550619.dkr.ecr.us-west-2.amazonaws.com'
+            sh 'buildah login -u AWS -p "$PASS" 136299550619.dkr.ecr.us-west-2.amazonaws.com'
             //""" 
             }  //end with
           } // end script
