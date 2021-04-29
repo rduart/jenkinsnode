@@ -35,40 +35,41 @@ pipeline {
           script {
           
             withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'randy-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-          
-          
-            echo "AWS_ACCESS_KEY_ID : ${AWS_ACCESS_KEY_ID}"
-            echo "AWS_SECRET_ACCESS_KEY : ${AWS_SECRET_ACCESS_KEY}"
+         
+            //echo "AWS_ACCESS_KEY_ID : ${AWS_ACCESS_KEY_ID}"
+            //echo "AWS_SECRET_ACCESS_KEY : ${AWS_SECRET_ACCESS_KEY}"
             
             echo '*************************************************************'
             echo '   buildah proxy setup'
             echo '*************************************************************'
-            //sh 'env'
+        
             echo "http_proxy : ${http_proxy}"
             echo "https_proxy : ${https_proxy}"
             sh 'whoami'
+            
             //sh 'yum update'
             sh 'yum install -y unzip'
           
+            // Get AWS CLI
             sh 'curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"'
+            
+            // Uzip AWS CLI
             sh 'unzip -q awscliv2.zip'
-          
-            sh 'pwd'
-          
-            //sh 'ls -lha'
-            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws'
-            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist'
-            //sh 'ls -lha /home/jenkins/agent/workspace/NextPL2/aws/dist/aws'
-            //sh 'cd /home/jenkins/agent/workspace/NextPL2/aws/dist'
-          
-       
+      
+            // Installl AWS CLI
             sh './aws/install'
+            
+            // Show version
             sh 'aws --version'
-            sh 'aws s3 ls'
-            //sh 'aws ecr get-login-password'
+            //sh 'aws s3 ls'
+            
+            // Run aws ecr get-login-password and put in a variable.
             def PASS = sh returnStdout: true, script:"aws ecr get-login-password"
             echo "PASS: $PASS" 
-            sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"
+            
+            // Run buildah login
+            sh 'buildah login -u "AWS" -p "$PASS" "136299550619.dkr.ecr.us-west-2.amazonaws.com"'
+            
             //""" 
             }  //end with
           } // end script
