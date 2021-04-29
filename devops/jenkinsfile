@@ -68,7 +68,7 @@ pipeline {
             //sh 'aws ecr get-login-password'
             def PASS = sh returnStdout: true, script:"aws ecr get-login-password"
             echo "PASS: $PASS" 
-            
+            sh 'buildah login -u "AWS" -p "$PASS" "xxxxxxx"
             //""" 
             }  //end with
           } // end script
